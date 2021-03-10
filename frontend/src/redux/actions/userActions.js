@@ -19,6 +19,7 @@ const userActions={
                 return data.data
               }
               }catch(error){
+                  console.log(data.data)
                 const data =[{errors:'Paso algo...'}]
                 return data.data
               }
@@ -92,9 +93,10 @@ const userActions={
         console.log(editarUsuario)
         return async (dispatch, getState)=> {
             const respuesta = await axios.put(`http://localhost:4000/api/usuarios/${id}`, editarUsuario )
-            console.log(respuesta)
+            console.log(respuesta.data)
             if(!respuesta.data.success){
             console.log('me fui')
+            console.log(respuesta.data)
             return respuesta.data 
         }
         }

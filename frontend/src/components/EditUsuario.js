@@ -52,7 +52,11 @@ function EditUsuario(props) {
             })
            
         } else{
-            setErrores("Sus contraseñas no coinciden")
+            Swal.fire({
+                icon: 'error',
+                title: '¡Lo siento!',
+                text: '¡Las contraseñas no coinciden!',
+              })
             return false
         }
 
@@ -62,8 +66,8 @@ function EditUsuario(props) {
         if (respuesta && !respuesta.success) {
             //setErrores(respuesta.errors)
             Swal.fire({
-                icon: 'success',
-                title: 'Error',
+                icon: 'error',
+                title: 'Todos los campos deben ser completados',
                 showConfirmButton: false,
                 timer: 1500
               })

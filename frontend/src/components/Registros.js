@@ -141,9 +141,9 @@ const Registro = (props) => {
                         onFailure={responseGoogle}
                         cookiePolicy={'single_host_origin'}
                     />
-                    <div className="errores">
+                   {/*  <div className="errores">
                         {errores.map((error,i) => <h1 key={`err${i}`}>{error}</h1>)}
-                    </div>
+                    </div> */}
                 
                     <Link to='/iniciarsesion' className="pLinksEntreCuentas"><p>Ya tienes cuenta? Haz click aquí</p></Link>
                 </div>
