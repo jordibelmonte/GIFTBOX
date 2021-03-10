@@ -9,7 +9,6 @@ function EditUsuario(props) {
     console.log(props)
     const[editarUsuario, setEditUsuario ] = useState({})
     const [editImagen, setEditImagen] = useState({})
-    const [passwordAnterior, setPasswordAnterior] = useState("")
     const [errores, setErrores] = useState([])
     const [visible, setVisible] = useState(false)
 
@@ -34,7 +33,6 @@ function EditUsuario(props) {
 
     const cambiarPassword = async e =>{
         e.preventDefault()
-        setErrores([])
         if (editarUsuario.passwordAnterior === '' || editarUsuario.repetirPassword === '' ||
         editarUsuario.password === '') {
             Swal.fire({
@@ -59,10 +57,17 @@ function EditUsuario(props) {
         }
 
         console.log(editarUsuario)
-
+        setErrores([])
         const respuesta = await props.editUsuarioPass(editarUsuario, props.loggedUser.id)
         if (respuesta && !respuesta.success) {
-            setErrores(respuesta.errors)
+            //setErrores(respuesta.errors)
+            Swal.fire({
+                icon: 'success',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            
         } else {
             Swal.fire({
                 icon: 'success',
@@ -116,6 +121,11 @@ function EditUsuario(props) {
                 <div className="guardaCambioContraseña" onClick={cambiarPassword} >
                     <p>GUARDAR</p>
                 </div>
+
+                {/* <div className="errores">
+                      {errores && errores.map(error => <h1>{error}</h1>)}
+                    </div> */}
+                                  
             </div>
             <div className="editUsuario">
                 <div className="modificarEmailUsuario">
@@ -129,9 +139,7 @@ function EditUsuario(props) {
                 </div>
             </div>   
 
-             <div className="errores">
-                {errores.map(error => <h2>{error}</h2>)}
-            </div>                        
+               
         </div>
     )
     
