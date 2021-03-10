@@ -6,12 +6,12 @@ const regalosController ={
 enviarRegalo: async (req, res) => {
 
         
-    const {email,carrito}=req.body;
+    const {email,carrito,paquetesId}=req.body;
     const {cuenta,nombre,apellido}=req.user;
     console.log(req.user)
     console.log(req.body)
-    
-    const nuevoRegalo=new Regalo({nombreEnviador:cuenta,cuentaDestinatario:email.emailDestinatario})
+    const nuevoRegalo=new Regalo({nombreEnviador:cuenta,cuentaDestinatario:email.emailDestinatario,paquetesId})
+    console.log(nuevoRegalo)
     nuevoRegalo.save()
     .then(nuevoRegalo => { return res.json({ success: true, response: nuevoRegalo }) })
     .catch(error => { return res.json({ success: false, error: "Error al cargar el regalo" }) })
@@ -42,9 +42,9 @@ enviarRegalo: async (req, res) => {
             ${email.mensaje!=="" ? `<h2> ${email.mensaje} </h2>`: ""}
             ${carrito.map(paquete=>`<h1>${paquete.nombre} x ${paquete.cantidad}</h1>`)}
             <h1>CODIGO: ${nuevoRegalo._id}</h1>
-            <link href="https://app-pixels.herokuapp.com/"><button style="padding:20px; text-decoration:none" >https://app-pixels.herokuapp.com/enterNewPassword</button></link>
-            <h3 style="color:#FFB5FF">If the button does not work, copy and paste the following link in your browser https://app-pixels.herokuapp.com/enterNewPassword </h3>
-            <h5 style="color:#FFB5FF">ASDASD</h5>
+            <link href="https://app-pixels.herokuapp.com/"><button style="padding:20px; text-decoration:none" >http://localhost:3000/regalo</button></link>
+            <h3 style="color:#FFB5FF">Si el link no te funciona, copia y pega este enlace en tu navegador http://localhost:3000/regalo </h3>
+            <h5 style="color:#FFB5FF">GIFTBOX</h5>
             </div>`}
             transport.sendMail(mailOptions, (error, info) =>{
             if(error){res.status(500).send(error.message)
@@ -60,7 +60,7 @@ enviarRegalo: async (req, res) => {
         .catch(error=>{return res.json({success:false, response:"Error al obtener los regalos"})})
     },
     unRegalo: (req,res)=>{
-        Regalo.findOne(req.params)
+        Regalo.findOne(req.params).populate("paquetesId.paqueteId")
         .then(data=>{return res.json({success:true, response:data})})
         .catch(error=>{return res.json({success:false, response:"Error al obtener el regalo"})})
     },

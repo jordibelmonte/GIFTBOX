@@ -4,9 +4,48 @@ import { BiArrowBack } from "react-icons/bi";
 import { connect } from "react-redux";
 import carritoActions from "../redux/actions/carritoActions";
 import {Link} from "react-router-dom"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 
 const Carrito=({carrito,eliminarDelCarrito,actualizarCarrito,total})=>{
     if(!carrito){return <h1>loading..</h1> }
+
+
+    function eliminarPaquete(paquete) {
+        eliminarDelCarrito(paquete)
+
+        const MySwal = withReactContent(Swal)
+                MySwal.fire({
+                title: <p className="popup" style={{color:"black",paddingTop: 15}}>Paquete eliminado!</p>,
+                icon:'error',
+                toast: true,
+                timer:1300,
+                timerProgressBar:true,
+                showConfirmButton:false,
+                width:'20vw', 
+                background:'#f6d3d3',
+                iconColor:'#f00606'                                        
+                })
+        if(!carrito){return <h1>loading..</h1> }
+    }
+    function carritoVacio() {
+
+        const MySwal = withReactContent(Swal)
+                MySwal.fire({
+                title: <p className="popup" style={{color:"black", fontSize:15,paddingTop: 15}}>No hay paquetes en tu carrito!</p>,
+                icon:'error',
+                toast: true,
+                timer:1500,
+                timerProgressBar:true,
+                showConfirmButton:false,
+                width:'20vw', 
+                background:'#f6d3d3',
+                iconColor:'#f00606'                                        
+                })
+        if(!carrito){return <h1>loading..</h1> }
+    }
+
     return(
         <>
         <div className="carrito">
@@ -25,7 +64,7 @@ const Carrito=({carrito,eliminarDelCarrito,actualizarCarrito,total})=>{
                         <div className="carritoPaquete" key={`carritoPaquete${paquete._id}`}>
                             <div className="carritoPaqueteNombre" style={{ backgroundImage: `url("../assets/bannerCarrito.jpg")` }} >
                                 {paquete.nombre}
-                                <BsTrash onClick={()=>eliminarDelCarrito(paquete)} style={{cursor:"pointer"}}/>
+                                <BsTrash onClick={()=>eliminarPaquete(paquete)} style={{cursor:"pointer"}}/>
                             </div>
                             <div className="carritoPaqueteContenido">
                                 <div id="carritoImagen">
@@ -79,7 +118,11 @@ const Carrito=({carrito,eliminarDelCarrito,actualizarCarrito,total})=>{
                             <p>$ {total}</p>
                         </div>
                         <div id="resumenContinuarYseguir">
+                            {(carrito && carrito.length === 0) ?
+                            <div to="/envio" id="carritoContinuar" onClick={carritoVacio}>Continuar</div>
+                            :
                             <Link to="/envio" id="carritoContinuar">Continuar</Link>
+                            }
                             <Link id="carritoSeguirComprando">Seguir Comprando</Link>
                         </div>
                     </div>

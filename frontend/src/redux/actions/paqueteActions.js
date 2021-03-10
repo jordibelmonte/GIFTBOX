@@ -69,6 +69,7 @@ const paqueteActions = {
   },
   agregarComentario: nuevoComentario => {
     const { comentarioUsuario, token, paqueteId } = nuevoComentario
+    console.log("1111111111111111111")
     return async (dispatch, getState) => {
       try {
         const response = await axios.post(`http://localhost:4000/api/paquete/comentario`, { comentarioUsuario, paqueteId },

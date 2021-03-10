@@ -76,7 +76,6 @@ function App({loggedUser,carritoDelLS,logFromLS}) {
       <Route exact path="/editUsuario" component={EditUsuario}/> 
       <Route exact path="/envio" component={Envio}/>
       <Route exact path="/envioMensaje" component={EnvioMensaje}/>
-      
       <Route exact path="/regalo" component={Regalo}/>
       <Route exact path="/pago" component={Pago}/>
       

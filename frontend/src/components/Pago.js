@@ -7,7 +7,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { FaMoneyBillAlt, FaPaypal } from "react-icons/fa";
 import regaloActions from "../redux/actions/regaloActions";
-
+import TarjetaDeCredito from "../components/TarjetaDeCredito"
 const Envio=({carrito,total,enviarRegalo})=>{
 
     if(!carrito){return <h1>loading..</h1> }
@@ -60,6 +60,8 @@ const Envio=({carrito,total,enviarRegalo})=>{
                             </div>
                         </div>
                     </div>
+                    <TarjetaDeCredito/>
+                
                 
                 <div  style={{width:"100%", paddingTop:"2vh"}}>
                     <Link id="carritoContinuar" style={{margin:"0"}} onClick={()=>enviarRegalo()}>

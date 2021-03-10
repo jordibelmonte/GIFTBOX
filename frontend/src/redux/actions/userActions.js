@@ -23,8 +23,7 @@ const userActions={
                 const data =[{errors:'Paso algo...'}]
                 return data.data
               }
-          }
-       
+          }       
     },
     cerrarSesion: () => {
         return (dispatch, getState) => {
@@ -84,8 +83,6 @@ const userActions={
         }
     },
     editUsuarioPass : (editarUsuario, id) => {
-        console.log("ACTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
-        console.log(editarUsuario)
         return async (dispatch, getState)=> {
             const respuesta = await axios.put(`http://localhost:4000/api/usuarios/${id}`, editarUsuario )
             console.log(respuesta.data)

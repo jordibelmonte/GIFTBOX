@@ -23,10 +23,13 @@ const Envio=({carrito,total,modificarRegalo})=>{
             setErrores(["Email no valido"])
         }
         else{ 
+            var paquetesId=[]
+            carrito.map(paquete=>paquetesId.push({paqueteId:paquete._id,cantidad:paquete.cantidad}))
             modificarRegalo({email:{
                 emailDestinatario:mailDestinatario,
                 asunto,
-            },carrito})
+            },carrito,
+            paquetesId})
             setErrores([])
         }
     }

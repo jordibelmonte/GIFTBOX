@@ -42,8 +42,6 @@ const Comentario = ({ paqueteId, comentario, loggedUser, eliminarComentario, edi
     await editarComentario(reComentar)
     setVisible(!visible)
   }
-  console.log(comentario)
-  console.log(loggedUser)
   return (
     <>
       <div className="comentarioContainer">

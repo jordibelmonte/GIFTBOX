@@ -1367,7 +1367,13 @@ input[type='radio']:checked:after {
         display: none;
     }
 }
+<<<<<<< HEAD
 
+=======
+.ojito {
+    margin-top: 1.5vh;
+}
+>>>>>>> 212b11900a4f400b50a51721b7ddd1ddfb7e240d
 @media (max-width: 600px){
     /* ------ USUARIO ------ */
 .boxChicaUsuario{
@@ -1386,16 +1392,3 @@ input[type='radio']:checked:after {
     width: 100%;
 }
 }
-
-.datosActualizados{
-    padding: 1vw;
-    border-radius: 20px;
-    border: 3px solid rgba(255, 37, 37, 0.842) ;
-    background-color:rgba(58, 0, 0, 0.678);
-    margin-bottom: 2vh;
-  }
-
-  .textoDatosActualizados{ 
-    color: rgb(255, 250, 200);
-    font-size: 50px;
-    }

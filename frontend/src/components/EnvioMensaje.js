@@ -13,6 +13,7 @@ const Envio=({carrito,total,regalo,modificarRegalo})=>{
     const [paraQuien,setParaQuien]=useState("")
     const [mensaje,setMensaje]=useState("")
     if(!carrito){return <h1>loading..</h1> }
+
     return(
         <>
         <div className="carrito">

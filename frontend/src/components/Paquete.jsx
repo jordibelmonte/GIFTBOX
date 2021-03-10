@@ -9,6 +9,9 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import Swal from 'sweetalert2'
 import Comentario from './Comentario'
 import carritoActions from '../redux/actions/carritoActions'
+import Opiniones from './Opiniones'
+import withReactContent from 'sweetalert2-react-content'
+
 
 const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarValoracion, agregarComentario ,agregarAlCarrito}) => {
   const [valor, setValor] = useState(0)
@@ -22,7 +25,6 @@ const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarV
       imagen: 'https://fotos.subefotos.com/846d622569fe9ff8dc1d5a95a9d05106o.png',
       lugar: 'Malabia 429'
     },
-
     {
       titulo: 'Spa El Roble, Villa Crespo',
       descripcion: 'Especialmente diseñado para el bienestar físicgadf, mental y espiritual. Un espacio creado para lograr calidez y armonía y quienes lo visiten puedan obtener una experiencia única.',
@@ -30,7 +32,6 @@ const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarV
       lugar: 'Malabia 4291'
     }
     ,
-
     {
       titulo: 'Spa El Roble, Villa Crespo',
       descripcion: 'Especialmente diseñado para el bienestar físico, mental y espiritual. Un espacio creado para lograr calidez y armonía y quienes lo visiten puedan obtener una experiencia únicaaaaaaaaaaaaaaaaaaaaaaaaaa.',
@@ -38,7 +39,6 @@ const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarV
       lugar: 'Malabia 4293'
     }
     ,
-
     {
       titulo: 'Spa El Roble, Villa Crespo',
       descripcion: 'Especialmente diseñado para el bienestar físidfgafdgdfco, mental y espiritual. Un espacio creado para lograr calidez y armonía y quienes lo visiten puedan obtener una experiencia única.',
@@ -46,7 +46,6 @@ const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarV
       lugar: 'Malabia 4295'
     }
     ,
-
     {
       titulo: 'Spa El Roble, Villa Crespo',
       descripcion: 'Especialmente diseñado para el bienestar físico, mental y espiritual. Un espacio creado para lograr calidez y armonía y quienes lo visiten puedan obtener una expehdfghdfgagadfgadfgdfgriencia única.',
@@ -66,12 +65,12 @@ const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarV
   const id = match.params._id
   useEffect(() => {
     var paquete = obtenerPaquetePorId(match.params._id)
-    // if (paquetePorId) {
+    // if (loggedUser && paquetePorId) {
     //   var aux = { valor: 0 }
     //   aux = paquetePorId.valoracion.find(valoracionUsuario => valoracionUsuario.idUsuario === loggedUser.id)
     //   if (aux.valor !== null && aux !== undefined) {
+        
     //     setUltimoValor(aux.valor)
-    //     console.log(ultimoValor)
     //   }
     // }
   }, [match.params._id])
@@ -116,8 +115,24 @@ const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarV
     }
 
   }
-  console.log(paquetePorId)
-  if(paquetePorId===undefined){return <h1>loading..</h1> }
+  function agregarCarrito() {
+    agregarAlCarrito(paquetePorId)
+
+    const MySwal = withReactContent(Swal)
+              MySwal.fire({
+              title: <p className="popup" style={{color:"black"}}>Agregado a tu carrito!</p>,
+              icon:'success',
+              toast: true,
+              timer:1300,
+              timerProgressBar:true,
+              showConfirmButton:false,
+              width:'15vw', 
+              background:'#d8f6d3',
+              iconColor:'#2fbc13'
+                                    
+              })
+    if(!paquetePorId){return <h1>loading..</h1> }
+  }
   return (
     <>
       {paquetePorId &&
@@ -147,14 +162,14 @@ const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarV
                 <div className="precio">$ {paquetePorId.precio}
                   <a href="https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264" target="blank">ver cuotas</a>
                 </div>
-                <button className="comprarPaquete" onClick={() => agregarAlCarrito(paquetePorId)}>Comprar esta GiftBox</button>
+                <button className="comprarPaquete" onClick={agregarCarrito}>Comprar esta GiftBox</button>
                 <div className="mediosdepago"></div>
               </div>
             </div>
           </div>
           <div className="valoracionContainer">
             <div className="valoracion">
-              {/* <span>{(paquetePorId.promedio).toFixed(2)}</span> */}
+              <span>{(paquetePorId.promedio).toFixed(2)}</span>
               <ReactStars count={5} onChange={setValor}
                 size={50} activeColor="#ffd700" isHalf={true} />
             </div>

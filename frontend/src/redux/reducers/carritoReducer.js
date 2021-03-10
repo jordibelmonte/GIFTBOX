@@ -13,9 +13,7 @@ const carritoReducer=(state=initialState,action)=>{
                     paquete.cantidad+=1;
                     paqueteEnCarrito=true;
                 }
-                return paquete
-                
-                
+                return paquete                
             })
 
             if(paqueteEnCarrito){

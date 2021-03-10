@@ -16,7 +16,7 @@ const Header = ({ carrito, loggedUser, logOut }) => {
     const [mostrarProductos, setMostrarProductos] = useState(true)
     const [visible, setVisible] = useState(false)
     const [isOpen, setOpen] = useState(false)
-
+    console.log(loggedUser)
     return (
         <>
             <div id="headerContainer">
@@ -35,7 +35,7 @@ const Header = ({ carrito, loggedUser, logOut }) => {
                     <div className="headerUserBottom spaceBetween">
                         {loggedUser ?
                             <>
-                                <Link to="/usuario">
+                                <Link>
                                     <div className="centerCenterRow userName">
                                         <div className="headerTituloPaquetes" onClick={() => setVisible(!visible)}>
                                             <div className="flexRowUsuarios">
@@ -51,8 +51,9 @@ const Header = ({ carrito, loggedUser, logOut }) => {
 
                                                     {visible &&
                                                         <div className="linksUsuario">
-                                                            <Link to="/" onClick={logOut} className="logOut paquetesPadres">LogOut</Link>
+                                                            <Link to="/usuario" className="logOut paquetesPadres">Mi cuenta</Link>
                                                             <Link to="/editUsuario" className="logOut paquetesPadres">Editar Usuario</Link>
+                                                            <Link to="/" onClick={logOut} className="logOut paquetesPadres">LogOut</Link>
                                                         </div>
                                                     }
                                                 </div>
