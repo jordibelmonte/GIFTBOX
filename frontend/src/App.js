@@ -1,5 +1,6 @@
 import './App.css'
 import React, { useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Paquetes from "./components/Paquetes";
 import Paquete from "./components/Paquete.jsx";
 import {Route,BrowserRouter,Switch,Redirect} from 'react-router-dom'
@@ -22,7 +23,8 @@ import Envio from './components/Envio';
 import EnvioMensaje from './components/EnvioMensaje';
 import Pago from './components/Pago';
 import Regalo from './components/Regalo';
-import 'bootstrap/dist/css/bootstrap.min.css'
+
+
 
 function App({loggedUser,carritoDelLS,logFromLS}) {
   const [renderAgain,setRenderAgain] = useState(false)
