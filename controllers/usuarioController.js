@@ -57,7 +57,9 @@ const usuarioController = {
         return res.json({
             success: errors.length===0? true:false,
             errors: errors,
-            response: errors.length===0 && {password:usuarioExistente.password}
+            response: errors.length===0 && {id: usuarioExistente._id, nombre:usuarioExistente.nombre,
+            apellido:usuarioExistente.apellido,imagen:usuarioExistente.imagen,rol:usuarioExistente.rol
+            ,googleUser:usuarioExistente.googleUser}
         }) 
     },
 
