@@ -142,7 +142,7 @@ const Registro = (props) => {
                         cookiePolicy={'single_host_origin'}
                     />
                     <div className="errores">
-                        {errores.map(error => <h1>{error}</h1>)}
+                        {errores.map((error,i) => <h1 key={`err${i}`}>{error}</h1>)}
                     </div>
                 
                     <Link to='/iniciarsesion' className="pLinksEntreCuentas"><p>Ya tienes cuenta? Haz click aquí</p></Link>

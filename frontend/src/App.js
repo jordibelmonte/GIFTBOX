@@ -25,7 +25,6 @@ import Regalo from './components/Regalo';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App({loggedUser,carritoDelLS,logFromLS}) {
-  console.log(loggedUser)
   const [renderAgain,setRenderAgain] = useState(false)
   if(localStorage.getItem("token") && !loggedUser){logFromLS(localStorage.getItem("token"))}
   if(localStorage.getItem("carrito")){

@@ -101,12 +101,12 @@
 
 .regaloDigital {
     box-shadow: inset 0 0 8px rgb(0 0 0 / 10%);
-    border-radius: 1vw;
+    border-radius: 5px;
     padding: 1vh;
     background-color: rgba(148, 148, 148, 0.157);
     text-align: center;
-    width: 10vw;
-    margin: 2vh 0 2vh 2vw;
+    width: 30%;
+    margin: 0vh 0 2vh 0vw;
     color: #ff6c5f;
     font-weight: 500;
 }
@@ -177,7 +177,7 @@
 }
 .valoracion span {
     margin-left: 1vw;
-    color:var(--amarillo);
+    color:#ffd700;;
     font-size: 50px;
     font-weight: 500;
 }
@@ -273,7 +273,7 @@
     color: #ff6c5f;
     font-size: 20px;
 }
-
+   
 /* Caja de comentarios */ 
 
 .cajaDeComentarios {
@@ -327,3 +327,69 @@
 .comentario {
     margin-left: 5vw;
 }
+
+
+/* ----- RESPONSIVE ------- */
+
+
+    /* ------ PAQUETE -------- */
+
+    @media (max-width:900px){
+        .paqueteImgInfo{
+            display: flex;
+            flex-direction: column;
+            width: 100% !important;
+        }
+        .paqueteImg{
+            background-size: cover;
+            height: 50vh !important;
+            width: 100% !important;
+            padding: 0 0 !important;
+            margin: 3vh 0 !important;
+        }
+        .paqueteInfo{
+            width: 100% !important;
+        }
+        .linea{
+            width: 100% !important;
+        }
+        .formatodeRegalo .reagaloDigital {
+            width: 50vw !important;
+            margin: 0 0 !important;
+            padding: 0 0 !important;
+        }
+        .formatodeRegalo{
+            width: 100%;
+        }
+        .comprarPaquete{
+            margin-left: 0 !important;
+            width: 40%;
+            height: fit-content;
+            padding:  1vh 2vw;
+        }
+        .valoracionContainer{
+            display: flex;
+            flex-direction: column;
+            height: fit-content;
+            padding: 2vh 0;
+            margin: 0 auto;
+            width: 90%;
+
+        }
+        .valoracion{
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+        }
+        .valoracion span{
+            font-size: 2rem;
+        }
+        .react-stars-wrapper-02086383796271407{
+            height: 5rem;
+        }
+        .cardProducto{
+            width: 300px;
+        }
+    }
+

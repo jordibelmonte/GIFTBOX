@@ -1,13 +1,17 @@
 
-import { BsCheck, BsDash, BsFillPeopleFill} from "react-icons/bs";
+import { BsCheck, BsFillPeopleFill} from "react-icons/bs";
 import { BiArrowBack } from "react-icons/bi";
 import { connect } from "react-redux";
 import {Link} from "react-router-dom"
 import ProgressBar from "@ramonak/react-progress-bar";
+import regaloActions from "../redux/actions/regaloActions";
 import { useState } from "react";
 
-const Envio=({carrito,total})=>{
-
+const Envio=({carrito,total,regalo,modificarRegalo})=>{
+    console.log(regalo)
+    const [deQuien,setDeQuien]=useState("")
+    const [paraQuien,setParaQuien]=useState("")
+    const [mensaje,setMensaje]=useState("")
     if(!carrito){return <h1>loading..</h1> }
     return(
         <>
@@ -32,7 +36,7 @@ const Envio=({carrito,total})=>{
             &&
                 <div className="carritoPaquetes">
                     {carrito && carrito.map(paquete=>
-                        <div className="carritoPaquete">
+                        <div className="carritoPaquete" key={`carritoP${paquete._id}`}>
                             <div className="carritoPaqueteNombre" style={{ backgroundImage: `url("../assets/bannerCarrito.jpg")` }} >
                                 {paquete.nombre}
                                
@@ -58,13 +62,14 @@ const Envio=({carrito,total})=>{
                     )}
                 <div className="inputMensajes">
                     <h3>¡Dejale tu mensaje! (opcional)</h3>
-                    <input type="text" placeholder="De" /> 
-                    <input type="text" placeholder="Para"/> 
-                    <textarea type="textarea" placeholder="Mensaje"/>                
+                    <input type="text" placeholder="De" onChange={(e)=>setDeQuien(e.target.value)}/> 
+                    <input type="text" placeholder="Para" onChange={(e)=>setParaQuien(e.target.value)}/> 
+                    <textarea type="textarea" placeholder="Mensaje" onChange={(e)=>setMensaje(e.target.value)}/>                
                 </div>
                 
                 <div  style={{width:"100%", paddingTop:"2vh"}}>
-                    <Link to="/pago" id="carritoContinuar" style={{margin:"0"}}>
+                    <Link to="/pago" id="carritoContinuar" style={{margin:"0"}} 
+                    onClick={()=>modificarRegalo({...regalo,email:{...regalo.email,deMensaje:deQuien,paraMensaje:paraQuien,mensaje}})}>
                          Continuar al pago
                     </Link>
                 </div>
@@ -78,7 +83,7 @@ const Envio=({carrito,total})=>{
                             <h4>Resumen de compra</h4>
                         </div>
                         {carrito.map(paquete=>
-                            <div id="resumenPaquetes">
+                            <div id="resumenPaquetes" key={`resumenPaq${paquete._id}`}>
                                 <div>
                                     <p>{paquete.nombre} x{paquete.cantidad}</p>
                                 </div>
@@ -102,9 +107,13 @@ const Envio=({carrito,total})=>{
 const mapStateToProps = state => {
     return {
         carrito: state.carritoReducer.carrito,
-        total:state.carritoReducer.total
+        total:state.carritoReducer.total,
+        regalo:state.regaloReducer.regalo
     }
+}
+const mapDispatchToProps ={
+    modificarRegalo: regaloActions.modificarRegalo
 }
 
 
-export default connect(mapStateToProps, null)(Envio)
+export default connect(mapStateToProps, mapDispatchToProps)(Envio)

@@ -1,5 +1,5 @@
 
-import { BsDash, BsFillPeopleFill, BsPlus, BsTrash} from "react-icons/bs";
+import { BsFillPeopleFill} from "react-icons/bs";
 import { BiArrowBack } from "react-icons/bi";
 import { connect } from "react-redux";
 import {Link} from "react-router-dom"
@@ -7,12 +7,15 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { AiOutlineMail } from "react-icons/ai";
 import { useState } from "react";
 import { SiWhatsapp } from "react-icons/si";
+import regaloActions from "../redux/actions/regaloActions";
 
-const Envio=({carrito,total})=>{
+const Envio=({carrito,total,modificarRegalo})=>{
     const [tipoEnvio,setTipoEnvio]=useState("")
     const [paraQuien,setParaQuien]=useState("")
     const [mailDestinatario, setMailDestinatario]= useState("");
     const [errores,setErrores]=useState([]);
+    const [asunto,setAsunto]=useState("")
+    
     const continuar=()=>{
         let lastAtPos = mailDestinatario.lastIndexOf('@');
         let lastDotPos = mailDestinatario.lastIndexOf('.');
@@ -20,11 +23,14 @@ const Envio=({carrito,total})=>{
             setErrores(["Email no valido"])
         }
         else{ 
+            modificarRegalo({email:{
+                emailDestinatario:mailDestinatario,
+                asunto,
+            },carrito})
             setErrores([])
         }
     }
     if(!carrito){return <h1>loading..</h1> }
-    console.log(mailDestinatario)
     return(
         <>
         <div className="carrito">
@@ -48,7 +54,7 @@ const Envio=({carrito,total})=>{
             &&
                 <div className="carritoPaquetes">
                     {carrito && carrito.map(paquete=>
-                        <div className="carritoPaquete">
+                        <div className="carritoPaquete" key={`carPac${paquete._id}`}>
                             <div className="carritoPaqueteNombre" style={{ backgroundImage: `url("../assets/bannerCarrito.jpg")` }} >
                                 {paquete.nombre}
                                
@@ -115,16 +121,16 @@ const Envio=({carrito,total})=>{
                     <div style={{display:"flex",flexDirection:"column",width:"100%" , height:"25vh", border:"black"}}>
                         <input type="email" className="tipoEnvio" placeholder=" E-mail del destinatario*" 
                         style={{height:"8vh",marginTop:"2vh",cursor:"text"}} onChange={(e)=>setMailDestinatario(e.target.value)}/>
-                        <input type="text" className="tipoEnvio" placeholder=" Asunto del E-mail (opcional)" 
+                        <input type="text" className="tipoEnvio" placeholder=" Asunto del E-mail (opcional)" onChange={(e)=>setAsunto(e.target.value)}
                         style={{height:"8vh",marginTop:"2vh",cursor:"text"}}/>
-                        {errores.length>0 && errores.map(error=><p style={{paddingTop:"1vh"}}>-{error}</p> )}
+                        {errores.length>0 && errores.map((error, i)=><p style={{paddingTop:"1vh"}} key={`error${i}`}>-{error}</p> )}
                     </div>  
                 }              
                 </>
                 }  
                 <div  style={{width:"100%", paddingTop:"2vh"}}>
                     <Link id="carritoContinuar" style={{margin:"0"}} onClick={continuar}>
-                        {paraQuien==="paraMi" ?<Link to="/envioMensaje"> Continuar al pago</Link> : <Link to="/envioMensaje"> Continuar al mensaje</Link>}
+                        {paraQuien==="paraMi" ?<Link to="/envioMensaje"> Continuar al pago</Link> : <Link to="/envioMensaje" > Continuar al mensaje</Link>}
                     </Link>
                 </div>
 
@@ -137,7 +143,7 @@ const Envio=({carrito,total})=>{
                             <h4>Resumen de compra</h4>
                         </div>
                         {carrito.map(paquete=>
-                            <div id="resumenPaquetes">
+                            <div id="resumenPaquetes" key={`resPac${paquete._id}`}>
                                 <div>
                                     <p>{paquete.nombre} x{paquete.cantidad}</p>
                                 </div>
@@ -161,9 +167,12 @@ const Envio=({carrito,total})=>{
 const mapStateToProps = state => {
     return {
         carrito: state.carritoReducer.carrito,
-        total:state.carritoReducer.total
+        total:state.carritoReducer.total,
+        regalo:state.regaloReducer.regalo
     }
 }
+const mapDispatchToProps ={
+    modificarRegalo: regaloActions.modificarRegalo
+}
 
-
-export default connect(mapStateToProps, null)(Envio)
+export default connect(mapStateToProps, mapDispatchToProps)(Envio)

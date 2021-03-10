@@ -6,7 +6,7 @@ import userActions from '../redux/actions/userActions'
 import Swal from 'sweetalert2'
 
 function EditUsuario(props) {
-    console.log(props)
+    
     const[editarUsuario, setEditUsuario ] = useState({})
     const [editImagen, setEditImagen] = useState({})
     const [errores, setErrores] = useState([])
@@ -90,10 +90,10 @@ function EditUsuario(props) {
     
     return (
         <div>
-            <div className='imgTopUsuario'>
+            <div className='imgTopUsuario' style={{backgroundImage: `url("https://static.bigbox.com.ar/webSsr/build/trama_usuario.782a82e25f2ec37b2be87b3374f4eb4a.png"`}}>
                 <div className='boxUser'>
                     <div className="userIconos">
-                        <div className="userImg"></div>
+                        <div className="userImg" style={{backgroundImage: `url("${props.loggedUser.imagen}")`}}></div>
                         <div className="iconoCambiarImg">
                             <p><IoCamera /></p> 
                         </div>

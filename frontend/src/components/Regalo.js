@@ -13,8 +13,9 @@ const Regalo=({loggedUser})=>{
                 <h3 style={{fontSize:"2.2rem", color:"#464646",paddingLeft:"1.5vw"}}>Tu regalo</h3>
                 
             </div>
-            <div >
-            
+            <div style={{display:"flex",justifyContent:"center"}}>
+            <input type="text" className="tipoEnvio" placeholder=" ingresa tu codigo" 
+                        style={{height:"8vh",marginTop:"2vh",cursor:"text"}}/>
             </div>
         </div>
             

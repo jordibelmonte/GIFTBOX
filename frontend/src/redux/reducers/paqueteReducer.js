@@ -58,20 +58,21 @@ const paqueteReducer = (state = initialState, action) => {
         todosLosPaquetes: aux
       }
     case 'ENVIAR_COMENTARIO':
-      console.log(action.payload)
       return {
         ...state,
-        paquete: state.todosLosPaquetes.map(paquete => paquete._id === action.payload._id ? action.payload : paquete)
+        paquetePorId: action.payload
       }
     case 'ELIMINAR_COMENTARIO':
       return {
         ...state,
-        paquete: state.todosLosPaquetes.map(paquete => paquete._id === action.payload._id ? action.payload : paquete)
+        paquetePorId: action.payload
       }
     case 'EDITAR_COMENTARIO':
+      console.log(action.payload)
       return {
         ...state,
-        paquete: state.todosLosPaquetes.map(paquete => paquete._id === action.payload._id ? action.payload : paquete)
+        paquetePorId: action.payload
+        // paquete: state.todosLosPaquetes.map(paquete => paquete._id === action.payload._id ? action.payload : paquete)
       }
     default:
       return state;

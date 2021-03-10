@@ -17,7 +17,7 @@ const CarritoPaquetes = ({ todosLosPaquetes,agregarAlCarrito, obtenerTodosLosPaq
             <div style={{border:"solid ", display:"flex", flexWrap:"wrap"}}>
                 {todosLosPaquetes&& todosLosPaquetes.map(paquete=>
                 <div style={{border:" solid red", width:"24vw",height:"20vh",display:"flex",flexDirection:"column",
-                justifyContent:"space-around"}}>
+                justifyContent:"space-around"}} key={`cartPackage${paquete._id}`}>
                     <h5>{paquete.nombre}</h5>
                     <h6>${paquete.precio}</h6>
                     <button onClick={()=>agregarAlCarrito(paquete)}>Añadir al carrito</button>

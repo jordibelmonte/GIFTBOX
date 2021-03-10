@@ -160,7 +160,9 @@ body{
 }
 
 .imgTopUsuario {
-    background-image: url("./assets/celeste.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100vw;
     height: 25vh;
     display: flex;
@@ -200,17 +202,17 @@ body{
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    margin-right: 60px;
+    margin-right: 3vw;
 }
 
 .userImg {
-    background-image: url("./assets/no-usuario.png");
+    /* background-image: url("./assets/no-usuario.png"); */
     width: 12vh;
     height: 12vh;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 500px;
+    border-radius: 1000px;
     border: 3px solid var(--secondary-color);
     box-shadow: 0px 0px 10px var(--primary-color);
     transition: 0.3s ease;
@@ -355,6 +357,9 @@ body{
     margin: 0 auto;
     justify-content: space-around;
 }
+.boxUser{
+    height: 15vh;
+}
 
 .boxUserRegistro {
     width: 100vw;
@@ -387,6 +392,9 @@ body{
     display: block;
     margin-top: 2rem;
     font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin-left: 0;
+    color: var(--color-primario);
 }
 /* CARRUSEL */
 
@@ -439,6 +447,7 @@ video {
     justify-content: center;
     align-items: center;
     background-color: #ececec;
+    padding: 5vh 0;
 }
 
 .filterInput {
@@ -461,6 +470,25 @@ video {
     flex-wrap: wrap;
     justify-content: center;
     width: 90%;
+}
+
+.packagesInput{
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    background-color: white;
+    margin: 2vh 0;
+    padding: 1vh 2vw;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    width: 40%;   
+}
+.packagesInput input{
+    width: 100%;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 .package {
@@ -778,8 +806,8 @@ border-radius: 30px;
 /* ------ EDITAR USUARIO ------ */
 
 .userImg{
-    width: 10vw;
-    height: 10vh;
+    width: 14vh !important;
+    height: 14vh !important;
     background-size: cover;
     background-position: center;
 }
@@ -1177,7 +1205,9 @@ input[type='radio']:checked:after {
         margin: 1vh 3vw;
         border-bottom: 1px solid rgb(161, 161, 161);
     }
-
+    .paquetesHeader{
+        display: none !important;
+    }
     /* ------- FOOTER ------- */
     .footerArriba{
         width: 100%;
@@ -1277,6 +1307,51 @@ input[type='radio']:checked:after {
     .precio {
         font-size: 1.75rem !important;
     }
+    /* ------  LOGIN ----- */
+    .modificarEmailUsuario{
+        width: 60%;
+    }
+
+    /* ------ REGISTRO ------- */
+    .formRegistro input{
+        width: 100%;
+    }
+    .inputFile{
+        width: 100%;
+    }
+    .uploadButton {
+        width: 100%;
+    }
+    .buttonRegister{
+        margin-top: 3vh;
+    }
+/* ------ PAQUETES FILTRO ----- */
+.packagesInput{
+    width: 80%;
+}
+
+/* ---- USUARIO ------ */
+
+.cambiarPassword input{
+    width: 100%;
+}
+.cambiarPassword {
+    width: 100%;
+}
+.modificarEmailUsuario{
+    width: 90%;
+}
+.guardaCambioContraseña{
+    margin: 0 0 !important;
+}
+.editUsuario{
+    margin: 0 0;
+    padding: 0 0;
+    height: 50vh;
+}
+
+
+
 }
 @media (min-width:901px){
     .headerResponsive{
@@ -1293,6 +1368,21 @@ input[type='radio']:checked:after {
     }
 }
 
-.ojito {
-    margin-top: 1.5vh;
+@media (max-width: 600px){
+    /* ------ USUARIO ------ */
+.boxChicaUsuario{
+    display: flex !important;
+    flex-direction: column !important;
+    height: fit-content;
+}
+.menuOpcionesUsuario{
+    display: flex !important;
+    flex-direction: column !important;
+    height: fit-content;
+    border-bottom: none;
+}
+.menuOpcionesUsuario div {
+    border-bottom: 1px solid rgb(126, 126, 126);
+    width: 100%;
+}
 }

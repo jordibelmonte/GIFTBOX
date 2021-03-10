@@ -22,7 +22,7 @@ const Carrito=({carrito,eliminarDelCarrito,actualizarCarrito,total})=>{
             ?
                 <div className="carritoPaquetes">
                     {carrito && carrito.map(paquete=>
-                        <div className="carritoPaquete">
+                        <div className="carritoPaquete" key={`carritoPaquete${paquete._id}`}>
                             <div className="carritoPaqueteNombre" style={{ backgroundImage: `url("../assets/bannerCarrito.jpg")` }} >
                                 {paquete.nombre}
                                 <BsTrash onClick={()=>eliminarDelCarrito(paquete)} style={{cursor:"pointer"}}/>
@@ -67,7 +67,7 @@ const Carrito=({carrito,eliminarDelCarrito,actualizarCarrito,total})=>{
                             <h4>Resumen de compra</h4>
                         </div>
                         {carrito.map(paquete=>
-                            <div id="resumenPaquetes">
+                            <div id="resumenPaquetes" key={`resumenPaq${paquete._id}`}>
                                 <div>
                                     <p>{paquete.nombre} x{paquete.cantidad}</p>
                                 </div>

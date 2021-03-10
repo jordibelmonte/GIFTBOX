@@ -6,8 +6,9 @@ import {Link} from "react-router-dom"
 import ProgressBar from "@ramonak/react-progress-bar";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { FaMoneyBillAlt, FaPaypal } from "react-icons/fa";
+import regaloActions from "../redux/actions/regaloActions";
 
-const Envio=({carrito,total})=>{
+const Envio=({carrito,total,enviarRegalo})=>{
 
     if(!carrito){return <h1>loading..</h1> }
     return(
@@ -61,7 +62,7 @@ const Envio=({carrito,total})=>{
                     </div>
                 
                 <div  style={{width:"100%", paddingTop:"2vh"}}>
-                    <Link id="carritoContinuar" style={{margin:"0"}}>
+                    <Link id="carritoContinuar" style={{margin:"0"}} onClick={()=>enviarRegalo()}>
                         Comprar
                     </Link>
                 </div>
@@ -102,6 +103,9 @@ const mapStateToProps = state => {
         total:state.carritoReducer.total
     }
 }
+const mapDispatchToProps={
+    enviarRegalo:regaloActions.enviarRegalo
+}
 
 
-export default connect(mapStateToProps, null)(Envio)
+export default connect(mapStateToProps, mapDispatchToProps)(Envio)

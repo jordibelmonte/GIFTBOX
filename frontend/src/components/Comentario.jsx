@@ -1,13 +1,17 @@
 import { connect } from 'react-redux'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import paqueteActions from '../redux/actions/paqueteActions'
 
 const Comentario = ({ paqueteId, comentario, loggedUser, eliminarComentario, editarComentario }) => {
 
   const [visible, setVisible] = useState(false)
   const [reComentar, setReComentar] = useState({})
+  const [opiniones, setOpiniones] = useState([])
 
-  console.log(comentario)
+  useEffect(() => {
+    setOpiniones(paqueteId.opiniones)
+  }, [opiniones])
+
   const enviarComentarioAEliminar = (e) => {
     e.preventDefault()
     eliminarComentario({
@@ -15,6 +19,7 @@ const Comentario = ({ paqueteId, comentario, loggedUser, eliminarComentario, edi
       token: loggedUser.token,
       comentarioId: comentario._id
     })
+    setOpiniones(paqueteId.opiniones)
   }
   const modificarComentario = e => {
     const nombre = e.target.name
@@ -26,18 +31,19 @@ const Comentario = ({ paqueteId, comentario, loggedUser, eliminarComentario, edi
       token: loggedUser.token,
       [nombre]: nuevoComentario
     })
+    setVisible(true)
   }
   const actualizarComentario = async (e) => {
     e.preventDefault()
-    // if (reComentar.editarComentario === undefined) {
-    //   setVisible(!visible)
-    //   return false
-    // }
+    if (reComentar.comentarioEditado === undefined) {
+      setVisible(!visible)
+      return false
+    }
     await editarComentario(reComentar)
-    setVisible(visible)
+    setVisible(!visible)
   }
   console.log(comentario)
-
+  console.log(loggedUser)
   return (
     <>
       <div className="comentarioContainer">
@@ -48,16 +54,17 @@ const Comentario = ({ paqueteId, comentario, loggedUser, eliminarComentario, edi
           <div className="nombreDeUsuario">{comentario.nombreUsuario}</div>
         </div>
         {!visible
-          ? <div className="comentario">"{comentario.comentarioUsuario}"</div>
-          : <div>
-              <input onChange={modificarComentario}></input>
-              <button onClick={actualizarComentario}>ENVIAR MODIFICADO</button>
+          ? <div>
+              <div className="comentario">"{comentario.comentarioUsuario}"</div>
+              <button onClick={modificarComentario}>EDITAR</button>
+              <button onClick={enviarComentarioAEliminar}>BORRAR</button>
             </div>
+          : <div>
+            <input onChange={modificarComentario} defaultValue={comentario.comentarioEditado} name="comentarioEditado"></input>
+            <button onClick={actualizarComentario}>ENVIAR MODIFICADO</button>
+          </div>
         }
-
         <div>
-          <button onClick={enviarComentarioAEliminar}>BORRAR</button>
-          <button onClick={modificarComentario}>Editar</button>
         </div>
       </div>
       <div className="linea"></div>
@@ -68,11 +75,13 @@ const Comentario = ({ paqueteId, comentario, loggedUser, eliminarComentario, edi
 
 const mapStateToProps = state => {
   return {
-    loggedUser: state.userReducer.loggedUser
+    loggedUser: state.userReducer.loggedUser,
+    paquetePorId: state.paqueteReducer.paquetePorId,
   }
 }
 
 const mapDispatchToProps = {
+  obtenerPaquetePorId: paqueteActions.obtenerPaquetePorId,
   eliminarComentario: paqueteActions.eliminarComentario,
   editarComentario: paqueteActions.editarComentario
 }

@@ -13,7 +13,6 @@ import userActions from "../redux/actions/userActions"
 
 
 const Header = ({ carrito, loggedUser, logOut }) => {
-    console.log(window)
     const [mostrarProductos, setMostrarProductos] = useState(true)
     const [visible, setVisible] = useState(false)
     const [isOpen, setOpen] = useState(false)
@@ -23,8 +22,8 @@ const Header = ({ carrito, loggedUser, logOut }) => {
             <div id="headerContainer">
                 <Link to='/'><div style={{ backgroundImage: `url("../assets/giftLogoF-01.png")` }} className='logoContainer'></div></Link>
                 <div className="paquetesHeader">
-                        <PaquetesHeader />
-                    </div>
+                    <PaquetesHeader />
+                </div>
                 <div className="headerUser centerVerticalColumn">
 
                     <div className="abrirRegalo centerCenterRow">
@@ -37,7 +36,6 @@ const Header = ({ carrito, loggedUser, logOut }) => {
                         {loggedUser ?
                             <>
                                 <Link to="/usuario">
-
                                     <div className="centerCenterRow userName">
                                         <div className="headerTituloPaquetes" onClick={() => setVisible(!visible)}>
                                             <div className="flexRowUsuarios">
@@ -87,36 +85,36 @@ const Header = ({ carrito, loggedUser, logOut }) => {
                     </div>
                 </div>
                 <div className="headerResponsive">
-                    <Hamburger toggled={isOpen} toggle={setOpen}/>
+                    <Hamburger toggled={isOpen} toggle={setOpen} />
                 </div>
-                    
-            
+
+
             </div>
-            {isOpen && 
-                        <div className="itemsHeaderResponsive" style={{width:document.documentElement.scrollWidth, height:document.documentElement.scrollHeight}}>
-                    {loggedUser 
-                    ? <div className="linksUsuarioResponsive">
-                        <div className="userHeaderResponsive">
-                        {loggedUser.googleUser === "true"
-                            ? <div id="userImg" style={{ backgroundImage: `url(${loggedUser.imagen})` }} />
-                            : <div id="userImg" style={{ backgroundImage: `url("../usuarioImg/${loggedUser.imagen}")` }} />}
-                            <p>{loggedUser.nombre}</p> 
+            {isOpen &&
+                <div className="itemsHeaderResponsive" style={{ width: document.documentElement.scrollWidth, height: document.documentElement.scrollHeight }}>
+                    {loggedUser
+                        ? <div className="linksUsuarioResponsive">
+                            <div className="userHeaderResponsive">
+                                {loggedUser.googleUser === "true"
+                                    ? <div id="userImg" style={{ backgroundImage: `url(${loggedUser.imagen})` }} />
+                                    : <div id="userImg" style={{ backgroundImage: `url("../usuarioImg/${loggedUser.imagen}")` }} />}
+                                <p>{loggedUser.nombre}</p>
+                            </div>
+                            <Link to="/" onClick={logOut}>LogOut</Link>
+                            <Link to="/editUsuario">Editar Usuario</Link>
                         </div>
-                        <Link to="/" onClick={logOut}>LogOut</Link>
-                        <Link to="/editUsuario">Editar Usuario</Link>
-                      </div>
-                : <div>
-                    <Link to="/iniciarsesion"  >
-                        <div onClick={()=>setOpen(false)}className="userNameResponsive">
-                            <div id="userImg" style={{ backgroundImage: `url("../assets/images.png")` }} />
-                                <p onClick={()=>setOpen(false)}>Mi perfil</p>
-                            <div className="centerCenterRow"><MdKeyboardArrowDown /></div>
-                        </div>
-                    </Link>
-                  </div> }
-                  
-            </div>}
-      
+                        : <div>
+                            <Link to="/iniciarsesion"  >
+                                <div onClick={() => setOpen(false)} className="userNameResponsive">
+                                    <div id="userImg" style={{ backgroundImage: `url("../assets/images.png")` }} />
+                                    <p onClick={() => setOpen(false)}>Mi perfil</p>
+                                    <div className="centerCenterRow"><MdKeyboardArrowDown /></div>
+                                </div>
+                            </Link>
+                        </div>}
+
+                </div>}
+
 
         </>
     )

@@ -9,6 +9,7 @@ const usuarioController = require("../controllers/usuarioController");
 const passwordController = require('../controllers/passwordController')
 const paquetesController = require("../controllers/paquetesController");
 const categoriasController = require("../controllers/categoriasController");
+const regalosController = require("../controllers/regalosController");
 
 
 // CONTROLADORES DE PRODUCTO 
@@ -40,8 +41,13 @@ router.route('/paquete/comentario')
   
 router.route('/paquete/comentario/:paqueteId/:comentarioId')
   .delete(paquetesController.eliminarComentario)
-
-
+// CONTROLADOR REGALO
+router.route("/regalos")
+  .get(regalosController.todosLosRegalos)
+router.route("/regalos/:_id")
+  .get(regalosController.todosLosRegalos)
+router.route("/regalo")
+  .post(passport.authenticate('jwt', { session: false }),regalosController.enviarRegalo)
 // CONTROLADOR DE USUARIO
 router.route('/usuarios/:_id')
   .delete(usuarioController.eliminarUsuario)

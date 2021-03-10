@@ -23,7 +23,7 @@ const PaquetesHeader = ({ todosLosPaquetes, paquetesPorCategoria, obtenerTodosLo
 
 
   // COMO USAR CARGANDO PARA MOSTRAR PRELOADER
-  if (!todosLosPaquetes || !todosLosProductos) { return <Loader /> }
+  /* if (!todosLosPaquetes || !todosLosProductos) { return <Loader /> } */
 
   return (
     <div className='contenedorPaquetes'>
@@ -33,7 +33,6 @@ const PaquetesHeader = ({ todosLosPaquetes, paquetesPorCategoria, obtenerTodosLo
           {(visible && todasLasCategorias) && todasLasCategorias.map(categoria => {
             return (
               <button className="paquetesPadres" onMouseEnter={() => obtenerPaquetesPorCategoria(categoria.nombre)} key={`btnCat${categoria._id}`}>{categoria.nombre}</button>
-
             )
           })}
         </div>

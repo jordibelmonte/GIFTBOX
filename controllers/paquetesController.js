@@ -91,13 +91,14 @@ const paquetesController = {
     }
   },
   editarComentario: async (req, res) => {
+    console.log(req.body)
     try {
       const { comentarioId, paqueteId, comentarioEditado } = req.body
       const response = await Paquete.findOneAndUpdate(
         { _id: paqueteId, 'opiniones._id': comentarioId },
         {
           $set: {
-            'opiniones.$.opinion': comentarioEditado
+            'opiniones.$.comentarioUsuario': comentarioEditado
           }
         },
         { new: true }
