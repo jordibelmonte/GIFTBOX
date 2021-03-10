@@ -19,7 +19,13 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loggedUser:null
-            }             
+            } 
+         case 'EDITAR_PASS' :
+             console.log(action.payload)
+            return{
+                ...state,
+                loggedUser: action.payload
+            }          
         default:
         return state
     }

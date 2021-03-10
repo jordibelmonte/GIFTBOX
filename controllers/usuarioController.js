@@ -34,14 +34,17 @@ const usuarioController = {
     editarUsuarioPass: async(req,res) =>{
         var errors=[]
         console.log(req.body)
+
         const {password, passwordVerificado}=req.body
         const id= req.params._id
+
+        console.log(req.params)
         var passwordHasheado = bcryptjs.hashSync(password, 10)
 
         var usuarioExistente = await Usuario.findOne({_id:id});
             if (usuarioExistente){
             var passwordMatches= bcryptjs.compareSync(passwordVerificado,usuarioExistente.password);
-            if(!passwordMatches){errors.push("Contraseña incorrecta la one");}
+            if(!passwordMatches){errors.push("Contraseña incorrecta, intente nuevamente");}
             else{
                 usuarioExistente = await Usuario.findOneAndUpdate({_id:id},
                     {'$set':{password:passwordHasheado}},
@@ -49,17 +52,14 @@ const usuarioController = {
             }
             //var token=jsonWebToken.sign({...usuarioExistente},process.env.JWT_SECRET_KEY,{});
         }else{
-            errors.push("Contraseña incorrecta la thwo")
+            errors.push("Usuario no existente")
         }
-
-
-      
         return res.json({
             success: errors.length===0? true:false,
             errors: errors,
             response: errors.length===0 && {id: usuarioExistente._id, nombre:usuarioExistente.nombre,
-            apellido:usuarioExistente.apellido,imagen:usuarioExistente.imagen,rol:usuarioExistente.rol
-            ,googleUser:usuarioExistente.googleUser}
+                apellido:usuarioExistente.apellido,imagen:usuarioExistente.imagen,rol:usuarioExistente.rol
+                ,googleUser:usuarioExistente.googleUser}
         }) 
     },
 
@@ -107,7 +107,7 @@ const usuarioController = {
         return res.json({
             success: errors.length===0? true:false,
             errors: errors,
-            response: errors.length===0 && {imagen:usuarioExistente.imgName}
+            response: errors.length===0 && {imagen:usuarioExistente.imagen}
         })
     },
     agregarUsuario: async (req,res)=>{

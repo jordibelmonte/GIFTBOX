@@ -53,10 +53,14 @@ router.route('/usuarios/:_id')
   .delete(usuarioController.eliminarUsuario)
   .put(usuarioController.editarUsuarioPass)
   .get(usuarioController.unUsuario)
+
+
 router.route("/usuarios")
   //.post(validador.validarNuevaCuenta, usuarioController.agregarUsuario)
   .post(usuarioController.agregarUsuario)
   .get(usuarioController.todosLosUsuarios)
+
+  
 router.route("/login")
   .post(usuarioController.login)
 router.route('/imagen/:_id')

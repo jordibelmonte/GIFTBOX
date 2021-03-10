@@ -8,9 +8,9 @@ import ReactStars from "react-rating-stars-component";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Swal from 'sweetalert2'
 import Comentario from './Comentario'
-import Opiniones from './Opiniones'
+import carritoActions from '../redux/actions/carritoActions'
 
-const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarValoracion, agregarComentario }) => {
+const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarValoracion, agregarComentario ,agregarAlCarrito}) => {
   const [valor, setValor] = useState(0)
   const [ultimoValor, setUltimoValor] = useState(0);
   const [visible, setVisible] = useState(false)
@@ -66,14 +66,14 @@ const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarV
   const id = match.params._id
   useEffect(() => {
     var paquete = obtenerPaquetePorId(match.params._id)
-    if (paquetePorId) {
-      var aux = { valor: 0 }
-      aux = paquetePorId.valoracion.find(valoracionUsuario => valoracionUsuario.idUsuario === loggedUser.id)
-      if (aux.valor !== null && aux !== undefined) {
-        
-        setUltimoValor(aux.valor)
-      }
-    }
+    // if (paquetePorId) {
+    //   var aux = { valor: 0 }
+    //   aux = paquetePorId.valoracion.find(valoracionUsuario => valoracionUsuario.idUsuario === loggedUser.id)
+    //   if (aux.valor !== null && aux !== undefined) {
+    //     setUltimoValor(aux.valor)
+    //     console.log(ultimoValor)
+    //   }
+    // }
   }, [match.params._id])
 
   const leerInput = (e) => {
@@ -147,7 +147,7 @@ const Paquete = ({ loggedUser, match, paquetePorId, obtenerPaquetePorId, enviarV
                 <div className="precio">$ {paquetePorId.precio}
                   <a href="https://www.mercadopago.com.ar/ayuda/medios-de-pago-cuotas-promociones_264" target="blank">ver cuotas</a>
                 </div>
-                <button className="comprarPaquete">Comprar esta GiftBox</button>
+                <button className="comprarPaquete" onClick={() => agregarAlCarrito(paquetePorId)}>Comprar esta GiftBox</button>
                 <div className="mediosdepago"></div>
               </div>
             </div>
@@ -222,7 +222,8 @@ const mapDispatchToProps = {
   obtenerValoracion: paqueteActions.obtenerValoracion,
   enviarValoracion: paqueteActions.enviarValoracion,
   agregarComentario: paqueteActions.agregarComentario,
-  eliminarComentario: paqueteActions.eliminarComentario
+  eliminarComentario: paqueteActions.eliminarComentario,
+  agregarAlCarrito: carritoActions.agregarAlCarrito
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Paquete)

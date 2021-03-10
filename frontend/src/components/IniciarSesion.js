@@ -4,6 +4,7 @@ import userActions from '../redux/actions/userActions'
 import GoogleLogin from 'react-google-login';
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
+// import { Alert } from 'rsuite'
 
 const IniciarSesion = (props) => {
     const [usuarioALoguear, setUsuarioALoguear] = useState({})
@@ -20,6 +21,7 @@ const IniciarSesion = (props) => {
 
     const validarUsuario = async e => {
         e.preventDefault()
+        setErrores([])
         if (usuarioALoguear.cuenta === '' || usuarioALoguear.password === '') {
             Swal.fire({
                 icon: 'error',
@@ -28,7 +30,7 @@ const IniciarSesion = (props) => {
             })
             return false
         }
-        setErrores([])
+
         const respuesta = await props.iniciarSesion(usuarioALoguear)
         if (respuesta && !respuesta.success) {
             setErrores([respuesta.errors])
@@ -42,8 +44,6 @@ const IniciarSesion = (props) => {
             }).then(() => {
                 props.history.push('/')
             })
-
-
         }
     }
 
@@ -85,7 +85,7 @@ const IniciarSesion = (props) => {
                 <h1 className="logeo">Login</h1>
                 <input type="text" name="cuenta" placeholder="Nombre de usuario"
                     onChange={leerInput} />
-                <input type="password" name="password" placeholder="Password"
+                <input type="texto" name="password" placeholder="Password"
                     onChange={leerInput} />
             </div>
 
@@ -93,11 +93,12 @@ const IniciarSesion = (props) => {
                 <p onClick={validarUsuario}>Login</p>
             </div>
             <GoogleLogin className="googlecito"
-                clientId="958442334135-59seulshhm4396e4ls8f3uugeggsenag.apps.googleusercontent.com"
-                buttonText="Iniciar Sesion con google"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'} />
+            clientId="958442334135-59seulshhm4396e4ls8f3uugeggsenag.apps.googleusercontent.com"
+            buttonText="Inicia sesión con Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+            />
 
             <div className="errores">
                 {errores.map(error => <h1>{error}</h1>)}

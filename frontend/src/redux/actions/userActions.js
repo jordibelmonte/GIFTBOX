@@ -45,8 +45,7 @@ const userActions={
             }
         }
     },
- 
-    resetearPassword: (cuenta)=> {
+     resetearPassword: (cuenta)=> {
         return async (dispatch) => {
             try{
                 const response = await axios.post('http://localhost:4000/api/user/resetear-password', {cuenta})
@@ -62,10 +61,7 @@ const userActions={
                     })
             }
         }
-    },
-
-
-    
+    },   
     logOut:()=>{
         return (dispatch, getState)=>{
             try{
@@ -76,7 +72,6 @@ const userActions={
             }
         }
       },
-
     iniciarSesion: (usuario) => {
         console.log(usuario)
         return async (dispatch, getState) => {
@@ -89,19 +84,21 @@ const userActions={
         }
     },
     editUsuarioPass : (editarUsuario, id) => {
-        console.log('llegue')
+        console.log("ACTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
         console.log(editarUsuario)
         return async (dispatch, getState)=> {
             const respuesta = await axios.put(`http://localhost:4000/api/usuarios/${id}`, editarUsuario )
             console.log(respuesta.data)
             if(!respuesta.data.success){
-            console.log('me fui')
-            console.log(respuesta.data)
-            return respuesta.data 
-        }
+                return respuesta.data 
+            }
+            else{
+                dispatch({type:'EDITAR_PASS', payload:respuesta.data})
+
+                return respuesta.data
+            }
         }
     },
-
     cambiarPassword : (editUsuario) => {
         console.log(editUsuario)
         return async (dispatch, getState)=> {
@@ -114,18 +111,17 @@ const userActions={
         }
     },
     editarUsuarioImg : (formNuevaImg, id) => {
-        console.log('llegue a Imagen')
-
+        
         return async (dispatch, getState)=> {
             const respuesta = await axios.put(`http://localhost:4000/api/imagen/${id}`, formNuevaImg)
-            console.log(respuesta)
-            if(!respuesta.data.success){
-            console.log('me fui')
-            return respuesta.data 
+            
+            if(respuesta.data.success){
+                dispatch({type:'EDITAR_FOTO', payload: respuesta.data})
+                console.log('llegue a Imagen')
+                console.log(respuesta.data)
+                return respuesta.data             
         }
         }
     }
-
-
 }
 export default userActions;
