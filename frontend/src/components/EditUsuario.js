@@ -83,13 +83,10 @@ function EditUsuario(props) {
             //   })
             return false
         } else {
-            Swal.fire({
-                icon: 'success',
-                title: 'Se han guardado los cambios de manera exitosa',
-                showConfirmButton: false,
-                timer: 20000
-              })
-            props.history.push('/')
+            setErrores(["¡Se han guardado los cambios de manera exitosa!"])
+            
+          
+            
         }
     }
   
