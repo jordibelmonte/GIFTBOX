@@ -52,9 +52,6 @@ return (
                     <button className="botonRegister" onClick={validarUsuario} >Recuperar contraseña!</button>
                 </div>
             </div>
-        <div style={{height:"50vh", width:"60vw"}}>
-            {/* {errores.map(error => alert(error))} */}
-        </div>
     </div>
         )
     }

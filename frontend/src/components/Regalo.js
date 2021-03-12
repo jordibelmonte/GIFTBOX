@@ -7,18 +7,20 @@ import regaloActions from "../redux/actions/regaloActions";
 import Swal from 'sweetalert2'
 
 const Regalo=({loggedUser,obtenerRegalo})=>{
+
+    console.log(obtenerRegalo)
     const codigo=useRef(null)
     const [regalo,setRegalo]=useState(null)
     const enviarCodigo=async ()=>{
         Swal.fire({
-            title: 'Custom width, padding, background.',
+            title: 'Disfruta de tu nuevo regalo!',
             width: 600,
             padding: '3em',
             background: '#fff url(/images/trees.png)',
             backdrop: `
-              rgba(0,0,123,0.4)
-              url("/images/nyan-cat.gif")
-              left top
+              rgba(0,0,123,0)
+              url("https://media2.giphy.com/media/5YrT02HhIpbiqFbF4j/giphy.gif")
+              right top
               no-repeat
             `
           })
@@ -30,29 +32,33 @@ const Regalo=({loggedUser,obtenerRegalo})=>{
     console.log(regalo)
     return(
         <div className="carrito">
-            <div className="carritoHead"  style={{ backgroundImage: `url("../assets/carritoImagen.png")` }} >
+            <div className="carritoHead"  style={{ backgroundImage: `url("https://static.bigbox.com.ar/webSsr/build/trama_usuario.782a82e25f2ec37b2be87b3374f4eb4a.png"` }} >
                 <Link to="/">
                     <BiArrowBack style={{fontSize: "3rem", color:"#464646"}}/>
                 </Link>
                 <h3 style={{fontSize:"2.2rem", color:"#464646",paddingLeft:"1.5vw"}}>Tu regalo</h3>
                 
             </div>
-            <div>
-
+            <div className="regaloPadre">            
             {!regalo?
-            <div style={{display:"flex",justifyContent:"center",flexDirection:"column",padding:"10vh 20vw"}}>
-                <input type="text" className="tipoEnvio" placeholder=" ingresa tu codigo" ref={codigo}
-                    style={{height:"8vh",marginTop:"2vh",cursor:"text"}}/>
+            <div  className="regalo" style={{display:"flex",justifyContent:"center",flexDirection:"column"}}>
+                <h1>Canjea el código de tu regalo</h1>
+                <input type="text" className="tipoEnvio" placeholder="Ingresa el codigo de tu regalo" ref={codigo}
+                    style={{cursor:"text"}}/>
                 <button onClick={()=>enviarCodigo()} >Enviar</button>
             </div>
             :
-            <div style={{display:"flex",justifyContent:"center",flexDirection:"column",padding:"10vh 20vw"}}>
+            <div style={{display:"flex",justifyContent:"center",flexDirection:"column"}}>
                 {regalo.paquetesId.map(regalo=>
-                <div>
-                    <div style={{backgroundImage:`url("${regalo.paqueteId.imagen}")`,width:"20vw",height:"20vh",backgroundSize:"cover"}}></div>
+                <div className="regaloItemPadre">
+                    <div className="regaloItem" style={{backgroundImage:`url("${regalo.paqueteId.imagen}")`}}></div>
                     <h3>{regalo.paqueteId.nombre}</h3>
-                    <h3>{`cantidad: ${regalo.cantidad}`}</h3>
-                    <button>ver detalles del paquete(falta poner link al id de este paquete)</button>
+                    <p>{`Cantidad: ${regalo.cantidad}`}</p>
+                    <Link className="regaloLink" to={`/paquete/${regalo.paqueteId._id}`}>
+                        <div className="regaloBoton">
+                            <span>Ver Paquete</span>
+                        </div>
+                    </Link>
                 </div> )}
             </div>
 

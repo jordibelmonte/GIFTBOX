@@ -4,8 +4,7 @@ const paquetesController = {
     console.log(req.files)
     const { nombre, precio, fecha, categoria, descripcion, cantidadPersonas, ubicacion, stock, cantidadVendidos, valoracion, opiniones, productos, imagen } = req.body;
     const paqueteAagregar = new Paquete({
-      nombre, precio, fecha, categoria, descripcion, cantidadPersonas, ubicacion, stock, cantidadVendidos, valoracion, opiniones, productos, imagen
-    })
+      nombre, precio, fecha, categoria, descripcion, cantidadPersonas, ubicacion, stock, cantidadVendidos, valoracion, opiniones, productos, imagen })
     paqueteAagregar.save()
       .then(nuevoPaquete => { return res.json({ success: true, response: nuevoPaquete }) })
       .catch(error => { return res.json({ success: false, error: "Error al cargar el paquete" }) })

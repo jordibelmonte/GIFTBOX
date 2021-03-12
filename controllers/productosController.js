@@ -2,9 +2,9 @@ const Producto= require("../models/Producto");
 const productoController ={
     agregarProducto: (req, res)=>{
         console.log(req.body)
-        const {nombre,precio,fecha,categoria,descripcion,cantidadPersonas,ubicacion,cantidadVendidos,valoracion,opiniones,paqueteId}=req.body;
+        const {nombre,precio,fecha,categoria,descripcion,cantidadPersonas,ubicacion,cantidadVendidos,valoracion,opiniones,paqueteId,imagen}=req.body;
         const productoAagregar = new Producto({
-            nombre,precio,fecha,categoria,descripcion,cantidadPersonas,ubicacion,cantidadVendidos,valoracion,opiniones,paqueteId
+            nombre,precio,fecha,categoria,descripcion,cantidadPersonas,ubicacion,cantidadVendidos,valoracion,opiniones,paqueteId,imagen
         })
         productoAagregar.save()
 

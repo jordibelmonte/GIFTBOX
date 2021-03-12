@@ -20,11 +20,6 @@ const PaquetesHeader = ({ todosLosPaquetes, paquetesPorCategoria, obtenerTodosLo
       obtenerTodasLasCategorias()
     }
   }, [])
-
-  console.log(todasLasCategorias)
-  console.log()
-  console.log()
-  console.log()
   // COMO USAR CARGANDO PARA MOSTRAR PRELOADER
   /* if (!todosLosPaquetes || !todosLosProductos) { return <Loader /> } */
 
