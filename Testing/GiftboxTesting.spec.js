@@ -2,7 +2,7 @@
 const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
 
-describe('Untitled', function() {
+describe('GiftboxTesting', function() {
   this.timeout(30000)
   let driver
   let vars
@@ -13,7 +13,7 @@ describe('Untitled', function() {
   afterEach(async function() {
     await driver.quit();
   })
-  it('Testeo si funciona o no el sistema', async function() {
+  it('Chequeo de campos vacios', async function() {
 
      // Logeo de usuario. Con nombre de cuenta y contraseña.
     
@@ -21,12 +21,12 @@ describe('Untitled', function() {
      await driver.findElement(By.css("#headerContainer > div.headerUser.centerVerticalColumn > div.headerUserBottom.spaceBetween > a > div > p")).click()
      await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > input[type=text]:nth-child(2)")).sendKeys("lucio_benedettelli@gmail.com")
      await driver.sleep(1000)
-     await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("starwars2020")
+     await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("bootcamp2021")
      await driver.sleep(1000)
      await driver.findElement(By.css("#root > div > div.editUsuario > div.guardaCambioContraseña")).click()
-     await driver.sleep(3000)
+     await driver.sleep(2000)
      await driver.findElement(By.css("#headerContainer > div.headerUser.centerVerticalColumn > div.headerUserBottom.spaceBetween > a > div > div > div > div > div > svg")).click()
-     await driver.sleep(3000)
+     await driver.sleep(2000)
      //Primer prueba: Chequear si se puede llenar el formulario con campos vacios
      await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > div")).click()
      await driver.sleep(1000)
@@ -40,20 +40,20 @@ describe('Untitled', function() {
     await driver.findElement(By.css("#headerContainer > div.headerUser.centerVerticalColumn > div.headerUserBottom.spaceBetween > a > div > p")).click()
     await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > input[type=text]:nth-child(2)")).sendKeys("lucio_benedettelli@gmail.com")
     await driver.sleep(1000)
-    await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("starwars2020")
+    await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("bootcamp2021")
     await driver.sleep(1000)
     await driver.findElement(By.css("#root > div > div.editUsuario > div.guardaCambioContraseña")).click()
-    await driver.sleep(3000)
+    await driver.sleep(2000)
     await driver.findElement(By.css("#headerContainer > div.headerUser.centerVerticalColumn > div.headerUserBottom.spaceBetween > a > div > div > div > div > div > svg")).click()
-    await driver.sleep(3000)
+    await driver.sleep(2000)
 
      // Segunda prueba: Chequear si la contraseña actual con la verificadora coinciden o no.
  
      await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > div > i")).click()
      await driver.sleep(1000)
-     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > input")).sendKeys("jedi2020")
+     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > input")).sendKeys("bootcamp2021")
      await driver.sleep(1000)
-     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(2) > input")).sendKeys("jedi")
+     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(2) > input")).sendKeys("bootcamp")
      await driver.sleep(1000)
      await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div.cambiarPassword > div > input")).sendKeys("star")
      await driver.sleep(1000)
@@ -68,12 +68,12 @@ describe('Untitled', function() {
       await driver.findElement(By.css("#headerContainer > div.headerUser.centerVerticalColumn > div.headerUserBottom.spaceBetween > a > div > p")).click()
       await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > input[type=text]:nth-child(2)")).sendKeys("lucio_benedettelli@gmail.com")
       await driver.sleep(1000)
-      await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("starwars2020")
+      await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("bootcamp2021")
       await driver.sleep(1000)
       await driver.findElement(By.css("#root > div > div.editUsuario > div.guardaCambioContraseña")).click()
-      await driver.sleep(3000)
+      await driver.sleep(2000)
       await driver.findElement(By.css("#headerContainer > div.headerUser.centerVerticalColumn > div.headerUserBottom.spaceBetween > a > div > div > div > div > div > svg")).click()
-      await driver.sleep(3000)
+      await driver.sleep(2000)
   
      // Tercera prueba: Si se completan todos los campos. Y la contraseña actual con la verificadora coincide, 
      //se puede cambiar la contraseña..
@@ -81,13 +81,13 @@ describe('Untitled', function() {
      await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > div > i")).click()
      await driver.sleep(1000)
  
-     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > input")).sendKeys("starwars2020")
+     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > input")).sendKeys("bootcamp2021")
      await driver.sleep(1000)
  
-     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(2) > input")).sendKeys("starwars2020")
+     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(2) > input")).sendKeys("bootcamp2021")
      await driver.sleep(1000)
 
-     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div.cambiarPassword > div > input")).sendKeys("bootcamp2021")
+     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div.cambiarPassword > div > input")).sendKeys("bootcamp2022")
      await driver.sleep(1000)
  
      await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > div")).click()
