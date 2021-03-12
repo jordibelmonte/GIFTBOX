@@ -205,7 +205,7 @@ const Paquete = ({productosDelpaquete,obtenerProductosPorPaquete ,loggedUser, ma
             <>
               <div className="cajaDeComentarios">
                 <h2 className="tituloComentarios">Opiniones:</h2>
-                <div className="filterInput" style={{ display: 'flex' }}>
+                <div className="filterInput">
                   <input id="inputComentario" type="text" autoComplete="off" name="comentarioUsuario" placeholder="Ingresá tu comentario..." onChange={leerInput} disabled={!loggedUser ? true : false} />
                   <div id="enviar"className="centerCenterRow searchButton"onClick={enviarComentario}><span><FaRegPaperPlane/></span></div>
                 </div>

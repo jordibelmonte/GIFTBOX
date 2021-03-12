@@ -109,9 +109,10 @@ body {
 
 .headerUser {
     height: 12vh;
-    margin-right: 2vw;
     width: 100%;
-    justify-content: space-around;
+    margin-right: 2vw;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 #userImg {
@@ -129,7 +130,19 @@ body {
 }
 
 .cart {
-    font-size: 1.65rem;
+    color: white;
+    background-color: var(--color-primario);
+    padding: 0.5vh;
+    border-radius: 1vh;
+    font-size: 2.65rem;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.459);
+    transition: .9s;
+}
+
+.cart:hover {
+    background-color: rgba(0, 0, 0, 0.794);
+    color:  var(--color-primario);
+    transition: .9s;
 }
 
 .headerUserBottom {
@@ -139,15 +152,26 @@ body {
 }
 
 .abrirRegalo {
+    width: 30vw;
     background-color: #F9F9F9;
     border-radius: 10px;
     border: 1px solid #ccc;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    margin-right: 2vw;
+    padding: 0.5vw;
+    display: flex;
+    justify-content: space-around;
 }
 
-.abrirRegalo p {
-    padding: 1vh 3vw;
+.abrirRegalo a {
     color: rgb(46, 46, 46);
+}
+
+.abrirRegalo span{
+    font-size: 22px;
+    padding-right: 1vw;
+    position: relative;
+    top: 0.2vh;
 }
 
 .registroHeader {
@@ -304,8 +328,12 @@ body {
     text-decoration: none;
     color: black;
     margin-left: 2vh;
+    transition: .5s;
 }
-
+.userName p:hover, a:hover{
+    color: var(--color-primario);
+    transition: .5s;
+}
 .userNameeImg {
     display: flex;
     flex-direction: column;
@@ -334,6 +362,7 @@ body {
 }
 
 .datosUser {
+    margin-left: 5vw;
     width: 25vw;
     display: flex;
     align-items: center;
@@ -635,8 +664,11 @@ video {
 .loMasRegalado {
     border: 2px solid #ccc;
     box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.3);
-    width: 90%!important;
+    width: 90% !important;
     outline: none;
+    height: 60vh !important;
+    padding: 1vh;
+    border-radius: 1vh;
 }
 
 .precioDetalle p {
@@ -644,9 +676,9 @@ video {
 }
 
 .precio {
-    font-size: 25px;
+    font-size: 1.8rem !important;
     font-weight: 600;
-    padding-bottom: 10px;
+    padding: 1vw
 }
 
 /* ------ FOOTER ------- */
@@ -974,7 +1006,7 @@ video {
 .carritoPaquete {
     width: 80%;
     height: 25vh;
-    margin-bottom: 4vh;
+    margin-bottom: 6vh;
 }
 
 .carritoPaqueteNombre {
@@ -1060,6 +1092,8 @@ video {
     height: 55vh;
     padding: 0vh 5vw;
     background-color: #ff66341c;
+    border-radius: 1vh;
+    box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.13);
 }
 
 #resumenTitulo {
@@ -1527,7 +1561,7 @@ input[type='radio']:checked:after {
 @media (max-width:900px) {
     /* ----- HEADER RESPONSIVE ------ */
     .headerContainer {
-        width: 200vw;
+        width: 100vw;
     }
     .headerResponsive {
         height: 100%;
@@ -1695,7 +1729,7 @@ input[type='radio']:checked:after {
         background-position: center !important;
         background-size: cover !important;
         background-repeat: no-repeat !important;
-        height: 20vh !important;
+        height: 30vh !important;
     }
     .precioDetalle p {
         margin: 1vh 2vw !important;
@@ -1756,7 +1790,15 @@ input[type='radio']:checked:after {
 .cargaContentButton, .cargaContent input .cargaContent textarea{
     width: 100%;
 }
-
+.loMasRegalado {
+    border: 2px solid #ccc;
+    box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.3);
+    width: 90% !important;
+    outline: none;
+    height: 52vh !important;
+    padding: 1vh;
+    border-radius: 1vh;
+}
 
 /* ------ REGALO ------ */
 .regaloItemPadre{
@@ -1802,6 +1844,8 @@ input[type='radio']:checked:after {
 
 
 @media (min-width:901px) {
+    
+    
     .headerResponsive {
         display: none
     }
@@ -1851,8 +1895,18 @@ input[type='radio']:checked:after {
     font-weight: 500;
     color: rgb(63, 63, 63);
     cursor: pointer;
+    transition: .5s;
 }
 
+.paquetesTituloH:hover {
+    color: var(--color-primario);
+    transition: .5s;
+}
+
+.paquetesTituloH span {
+    position: relative;
+    top: 0.5vh;
+}
 
 .categoriasContainer{
     display: flex;

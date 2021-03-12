@@ -97,7 +97,7 @@ const Carrito=({carrito,eliminarDelCarrito,actualizarCarrito,total})=>{
                     )}
                 </div>
             :
-            <div className="carritoPaquetes" style={{paddingTop:"10vh",fontSize:"1.4rem"}}>
+            <div className="carritoPaquetes" style={{paddingTop:"10vh",fontSize:"1.4rem", backgroundImage: 'url("https://www.comidasdevictor.com/assets/img/carrito_vacio.png")', backgroundSize: '40%', backgroundRepeat: 'no-repeat', backgroundPosition: 'bottom'}}>
                 <h2>Tu carrito está vacío</h2>
                 <h5>¿No sabés qué comprar? ¡Miles de paquetes te esperan!</h5>
             </div>

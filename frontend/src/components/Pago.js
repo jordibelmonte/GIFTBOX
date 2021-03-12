@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { BsCheck} from "react-icons/bs";
 import { BiArrowBack, BiCreditCard } from "react-icons/bi";
 import { connect } from "react-redux";
@@ -19,6 +19,7 @@ const Envio=({carrito,total,enviarRegalo, eliminarDelCarrito})=>{
     const[tarjetaValida, setTarjetaValida]= useState(false)
 
     console.log(tarjetaValida)
+    
     if(!carrito){return <h1>loading..</h1>}
     
     function botonComprar() {

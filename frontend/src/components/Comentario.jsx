@@ -61,15 +61,15 @@ const Comentario = ({ paqueteId, comentario, loggedUser, eliminarComentario, edi
             <div className="comentario">"{comentario.comentarioUsuario}"</div>
               {loggedUser && loggedUser.id === comentario.idUsuario &&
                 <div className="borrarYmodificar">
-                  <div onClick={modificarComentario} className="editarComentario"><AiOutlineEdit/></div>
-                  <div onClick={enviarComentarioAEliminar} className="borrarComentario"><BsTrash/></div>
+                  <div onClick={modificarComentario} className="editarComentario" style={{cursor: 'pointer'}}><AiOutlineEdit/></div>
+                  <div onClick={enviarComentarioAEliminar} className="borrarComentario" style={{cursor: 'pointer'}}><BsTrash/></div>
                 </div>}
           </div>
           : <div  className="cajaEditarComentario">
             <input onChange={modificarComentario} defaultValue={comentario.comentarioUsuario} name="comentarioEditado"></input>
             <div className="borrarYmodificar">
-              <div onClick={actualizarComentario} className="editarComentario"><AiOutlineSend/></div>
-              <div className="borrarComentario" onClick={() => setVisible(!visible)}><BsBackspaceReverse/></div>
+              <div onClick={actualizarComentario} className="editarComentario" style={{cursor: 'pointer'}}><AiOutlineSend/></div>
+              <div className="borrarComentario" onClick={() => setVisible(!visible)} style={{cursor: 'pointer'}}><BsBackspaceReverse/></div>
             </div>
           </div>
         }

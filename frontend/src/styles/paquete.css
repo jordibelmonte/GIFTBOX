@@ -380,12 +380,16 @@
     font-size: 1.1rem;
     color: rgba(0, 0, 0, 0.507);
 }
+#enviar {
+    cursor: pointer;
+}
 .filterInput input {
     border-radius: 10px 0 0 10px;
     width: 50vw;
     height: 5vh;
     text-align: center;
     outline: none;
+    margin-bottom: 1.3vh;
 }
 .cajaEditarComentario {
     display: flex;
