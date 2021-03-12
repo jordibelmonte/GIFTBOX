@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 const IniciarSesion = (props) => {
     const [usuarioALoguear, setUsuarioALoguear] = useState({})
     const [errores, setErrores] = useState([])
+    const [visible, setVisible] = useState(false)
 
     const leerInput = e => {
         const valor = e.target.value
@@ -85,9 +86,13 @@ const IniciarSesion = (props) => {
                 <h1 className="logeo">Login</h1>
                 <input type="text" name="cuenta" placeholder="Nombre de usuario"
                     onChange={leerInput} />
-                <input type="texto" name="password" placeholder="Password"
-                    onChange={leerInput} />
-            </div>
+
+                        <div className="a">
+                        <input className="inputRegisterPassword" type={visible ? "text" : "password"} name="password" placeholder="Contraseña nueva" onChange={leerInput} />
+                        <div className='ojito'><i className={visible ? "far fa-eye-slash" : "far fa-eye"} onClick={() => setVisible(!visible)}></i></div>
+                    </div>
+            
+                    </div>
 
             <div className="guardaCambioContraseña">
                 <p onClick={validarUsuario}>Login</p>

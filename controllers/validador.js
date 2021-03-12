@@ -19,6 +19,25 @@ const validador = {
             
         })
 
+
+        const validacion = schema.validate(req.body, {abortEarly: false})
+
+        if (!validacion.error) {
+            next()
+        } else {
+            res.json({success: false, errores: validacion.error.details})
+            
+        }
+      },
+
+      validarEditarUsuario: (req, res, next) => {
+        const schema = Joi.object({
+            password: Joi.string().trim().required().pattern(/(?=.*\d)/).min(5).message({
+                "string.min": "Tu contraseña debe contener al menos 5 caracteres",
+        })
+    })
+        
+
         const validacion = schema.validate(req.body, {abortEarly: false})
 
         if (!validacion.error) {

@@ -70,7 +70,6 @@ function EditUsuario(props) {
             //   })
             return false
         }
-
         const respuesta = await props.editUsuarioPass(editarUsuario, props.loggedUser.id)
 
         if (respuesta && !respuesta.success) {
@@ -90,6 +89,10 @@ function EditUsuario(props) {
                 showConfirmButton: false,
                 timer: 1500
               })
+            setErrores(["¡Se han guardado los cambios de manera exitosa!"])
+            
+          
+            
         }
     }
   
@@ -137,16 +140,32 @@ function EditUsuario(props) {
             </div>
             <div className="editUsuario">
                 <form className="modificarEmailUsuario">
-                    <input type="texto" placeholder="Contraseña anterior" name="passwordAnterior" onChange={leerInputPass} />
-                    <input type="texto" placeholder="Repetir contraseña anterior" name="repetirPassword" onChange={leerInputPass} />    
+                <div className="a">
+                        <input className="inputRegisterPassword" type={visible ? "text" : "password"} name="passwordAnterior" placeholder="Contraseña anterior" onChange={leerInputPass} />
+                        <div className='ojito'><i className={visible ? "far fa-eye-slash" : "far fa-eye"} onClick={() => setVisible(!visible)}></i></div>
+                    </div>
+
+                    <div className="a">
+                        <input className="inputRegisterPassword" type={visible ? "text" : "password"} name="repetirPassword" placeholder="Repetir Password" onChange={leerInputPass} />
+                        <div className='ojito'><i className={visible ? "far fa-eye-slash" : "far fa-eye"} onClick={() => setVisible(!visible)}></i></div>
+                    </div>
+
                 <div className="cambiarPassword">
                     <p>Cambiar Contraseña</p>
-                    <input type="texto" placeholder="Nueva Contraseña" name="password" onChange={leerInputPass} />
+                    <div className="a">
+                        <input className="inputRegisterPassword" type={visible ? "text" : "password"} name="password" placeholder="Contraseña nueva" onChange={leerInputPass} />
+                        <div className='ojito'><i className={visible ? "far fa-eye-slash" : "far fa-eye"} onClick={() => setVisible(!visible)}></i></div>
+                    </div>
                 </div>
                 </form>
                 <div className="guardaCambioContraseña" onClick={cambiarPassword} >
                     <p>GUARDAR</p>
                 </div>
+
+                {/* <div className="errores">
+                      {errores && errores.map(error => <h1>{error}</h1>)}
+                    </div> */}
+                                  
             </div>
 
             <div className="errores">

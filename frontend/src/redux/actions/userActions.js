@@ -19,6 +19,7 @@ const userActions={
                 return data.data
               }
               }catch(error){
+                  console.log(data.data)
                 const data =[{errors:'Paso algo...'}]
                 return data.data
               }

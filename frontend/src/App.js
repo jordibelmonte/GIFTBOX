@@ -1,5 +1,6 @@
 import './App.css'
 import React, { useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Paquetes from "./components/Paquetes";
 import Paquete from "./components/Paquete.jsx";
 import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom'
