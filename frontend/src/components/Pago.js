@@ -96,11 +96,11 @@ const Envio=({carrito,total,enviarRegalo, eliminarDelCarrito})=>{
                     <TarjetaDeCredito setTarjetaValida={setTarjetaValida}/>
                 
                 
-                <div  style={{width:"100%", paddingTop:"2vh"}}>
-                    <Link id="carritoContinuar" style={{margin:"0"}} onClick={botonComprar}>
+                <Link  style={{width:"100%", paddingTop:"2vh"}} onClick={botonComprar}>
+                    <div id="carritoContinuar" style={{margin:"0"}}>
                         Comprar
-                    </Link>
-                </div>
+                    </div>
+                </Link>
 
             </div>
             

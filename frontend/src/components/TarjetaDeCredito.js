@@ -17,6 +17,7 @@ const PaymentForm = ({setTarjetaValida}) => {
   function largoNumero(e) {
     if (e.target.value.length > 16) 
     {e.target.value = e.target.value.slice(0,16)}
+    console.log(e.target.value)
     if(number[0] !== 4){
       console.log("IFF")
       setTarjetaValida(false)
