@@ -87,10 +87,8 @@ const IniciarSesion = (props) => {
                 <input type="text" name="cuenta" placeholder="Nombre de usuario"
                     onChange={leerInput} />
 
-                        <div className="a">
-                        <input className="inputRegisterPassword" type={visible ? "text" : "password"} name="password" placeholder="Contraseña nueva" onChange={leerInput} />
-                        <div className='ojito'><i className={visible ? "far fa-eye-slash" : "far fa-eye"} onClick={() => setVisible(!visible)}></i></div>
-                    </div>
+<input type="texto" name="password" placeholder="Password"
+                    onChange={leerInput} />
             
                     </div>
 
