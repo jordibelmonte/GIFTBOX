@@ -32,10 +32,12 @@ const Header = ({ carrito, loggedUser, logOut }) => {
                             <Link to="/registro" className="registroHeader">Registrarse</Link>
                         }
                     </div>
+                    
                     <div className="headerUserBottom spaceBetween">
                         {loggedUser ?
                             <>
-                                <Link>
+                                <Link to="/editUsuario">
+
                                     <div className="centerCenterRow userName">
                                         <div className="headerTituloPaquetes" onClick={() => setVisible(!visible)}>
                                             <div className="flexRowUsuarios">

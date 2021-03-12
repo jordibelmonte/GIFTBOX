@@ -21,7 +21,7 @@ describe('GiftboxTesting', function() {
      await driver.findElement(By.css("#headerContainer > div.headerUser.centerVerticalColumn > div.headerUserBottom.spaceBetween > a > div > p")).click()
      await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > input[type=text]:nth-child(2)")).sendKeys("lucio_benedettelli@gmail.com")
      await driver.sleep(1000)
-     await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("bootcamp2021")
+     await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("bootcamp2023")
      await driver.sleep(1000)
      await driver.findElement(By.css("#root > div > div.editUsuario > div.guardaCambioContraseña")).click()
      await driver.sleep(2000)
@@ -40,7 +40,7 @@ describe('GiftboxTesting', function() {
     await driver.findElement(By.css("#headerContainer > div.headerUser.centerVerticalColumn > div.headerUserBottom.spaceBetween > a > div > p")).click()
     await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > input[type=text]:nth-child(2)")).sendKeys("lucio_benedettelli@gmail.com")
     await driver.sleep(1000)
-    await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("bootcamp2021")
+    await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("bootcamp2023")
     await driver.sleep(1000)
     await driver.findElement(By.css("#root > div > div.editUsuario > div.guardaCambioContraseña")).click()
     await driver.sleep(2000)
@@ -51,7 +51,7 @@ describe('GiftboxTesting', function() {
  
      await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > div > i")).click()
      await driver.sleep(1000)
-     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > input")).sendKeys("bootcamp2021")
+     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > input")).sendKeys("bootcamp2023")
      await driver.sleep(1000)
      await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(2) > input")).sendKeys("bootcamp")
      await driver.sleep(1000)
@@ -68,7 +68,7 @@ describe('GiftboxTesting', function() {
       await driver.findElement(By.css("#headerContainer > div.headerUser.centerVerticalColumn > div.headerUserBottom.spaceBetween > a > div > p")).click()
       await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > input[type=text]:nth-child(2)")).sendKeys("lucio_benedettelli@gmail.com")
       await driver.sleep(1000)
-      await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("bootcamp2021")
+      await driver.findElement(By.css("#root > div > div.editUsuario > div.modificarEmailUsuario > div > input")).sendKeys("bootcamp2023")
       await driver.sleep(1000)
       await driver.findElement(By.css("#root > div > div.editUsuario > div.guardaCambioContraseña")).click()
       await driver.sleep(2000)
@@ -81,13 +81,13 @@ describe('GiftboxTesting', function() {
      await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > div > i")).click()
      await driver.sleep(1000)
  
-     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > input")).sendKeys("bootcamp2021")
+     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(1) > input")).sendKeys("bootcamp2023")
      await driver.sleep(1000)
  
-     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(2) > input")).sendKeys("bootcamp2021")
+     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div:nth-child(2) > input")).sendKeys("bootcamp2023")
      await driver.sleep(1000)
 
-     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div.cambiarPassword > div > input")).sendKeys("bootcamp2022")
+     await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > form > div.cambiarPassword > div > input")).sendKeys("bootcamp2024")
      await driver.sleep(1000)
  
      await driver.findElement(By.css("#root > div > div:nth-child(2) > div:nth-child(2) > div")).click()
