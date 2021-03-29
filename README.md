@@ -1,6 +1,5 @@
 # GIFTBOX
-Aplicación web desarrollada con stack mern. Web realizada con el objetivo de que cada desarrollador pueda mostrar hacia una comunidad sus proyectos de desarrollo dentro del mundo gaming.
-Aplicación web desarrollada con stack mern. Web realizada con el objetivo de que cada desarrollador pueda mostrar hacia una comunidad sus proyectos de desarrollo dentro del mundo gaming con el enfoque de poder recibir un feedback u opiniones de su producto.
+Aplicación web desarrollada con stack MERN. Web realizada con el objetivo de que cada cliente pueda vivir una experiencia distinta con un regalo, para uno mismo u otra persona. La web nos permite regalar un paquete y ese paquete dentro tiene distintas experiencias para vivir. Esa compra se hace mediante una pasarela de pagos la cual tiene integrado Paypal. Al realizar la compra nos envía un código al mail para acceder al producto adquirido haciendo el canje del código. Cuenta con autentificación de usuarios con Google.
 
 # Trabajo realizado
 Una app desarrollada en dos semanas, realizando dailies diarias y meets durante todo el dia para poder resolver los diferentes inconvenientes ya que fue un challenge para el bootcamp cursado en MindHub.
